@@ -96,13 +96,17 @@ Faturamento do dia: R$ {sum(caixa_diario)} reais""")
             print(f"Clientes ativos: {lista_clientes}")
             print(lista_agendamentos)
             nome_cancelado=input("Nome do cliente que deseja cancelar agendamento: ").strip().upper()
-            horario_cancelado=input("Horario a ser liberado. Exemplo 08:00: ")
             if nome_cancelado in lista_clientes:
                   lista_clientes.remove(nome_cancelado)
                   lista_cancelados.append(nome_cancelado)
-                  print(f"Agendamento de {nome_cancelado} foi cancelado")
+                  horario_cancelado=input("Horario a ser liberado. Exemplo 08:00: ")
+                  horarios_disponiveis.append(horario_cancelado)
+                  if agendamento in lista_agendamentos:
+                        if nome_cancelado in agendamento:
+                              lista_agendamentos.remove(agendamento)
+                              print(f"Agendamento de {nome_cancelado} foi cancelado")
             else:
                   print("Este cliente nao tem agendamento ativo")
-            horarios_disponiveis.append(horario_cancelado)
+            
       else:
             print(f"Não entendi, tente novamente.")
