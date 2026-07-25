@@ -13,6 +13,7 @@ lista_notas=[]
 lista_cancelados=[]
 caixa_diario=[]
 lista_agendamentos=[]
+horarios_disponiveis=["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]
 
 while True:
       opcao=int(input("""
@@ -28,7 +29,16 @@ Escolha entre as opções do menu: """))
             print("Perfeito, vou te ajudar! Mas antes preciso de algumas informações: ")
             cliente=input("Insira seu nome: ").strip().upper()
             dia=input("Dia de interesse: ").strip().upper()
-            horario=int(input("Horario de interesse: "))
+            horario=(input(f""" Horarios disponiveis:
+            {horarios_disponiveis} 
+            escolha entre os horarios acima (Exemplo: 08:00): """))
+            if horario in horarios_disponiveis:
+                  print(f"{horario} agendado pre agendado, prossiga")
+            
+            if not horario in horarios_disponiveis:
+                  print(f"{horario} indisponivel, tente outro")
+                  continue
+            horarios_disponiveis.remove(horario)
             barbeiro=input("Gostaria de marcar com qual barbeiro? ").strip().upper()
             servico=int(input(f"""
 [1] Barba
@@ -84,12 +94,15 @@ Faturamento do dia: R$ {sum(caixa_diario)} reais""")
             break
       elif opcao==5:
             print(f"Clientes ativos: {lista_clientes}")
+            print(lista_agendamentos)
             nome_cancelado=input("Nome do cliente que deseja cancelar agendamento: ").strip().upper()
+            horario_cancelado=input("Horario a ser liberado. Exemplo 08:00: ")
             if nome_cancelado in lista_clientes:
                   lista_clientes.remove(nome_cancelado)
                   lista_cancelados.append(nome_cancelado)
                   print(f"Agendamento de {nome_cancelado} foi cancelado")
             else:
                   print("Este cliente nao tem agendamento ativo")
+            horarios_disponiveis.append(horario_cancelado)
       else:
             print(f"Não entendi, tente novamente.")
