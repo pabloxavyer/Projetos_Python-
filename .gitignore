@@ -1,2 +1,3 @@
-/.vscode
-AgendaBarber.py
+.copilot/
+.vscode/
+.vscode-shared/
