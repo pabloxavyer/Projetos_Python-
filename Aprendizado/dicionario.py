@@ -3,22 +3,22 @@ LISTA DE BARBEIROS
 EXERCICIO 1
 """)
 
-barbeiro=[
+barbeiros=[
     {"nome": "Pablo", "especialidade": "Degradê", "esperiencia": 5},
     {"nome": "Juan", "especialidade": "Barba", "esperiencia": 3},
     {"nome": "Raul", "especialidade": "Sombracelha", "esperiencia": 1}
     ]
-print(f"O barbeiro {barbeiro[2]['nome']} é especialista em {barbeiro[2]['especialidade']} há {barbeiro[2]['esperiencia']} anos.")
-print(barbeiro)
+print(f"O barbeiro {barbeiros[2]['nome']} é especialista em {barbeiros[2]['especialidade']} há {barbeiros[2]['esperiencia']} anos.")
+print(barbeiros)
 
 print("""
 Adionando mais informações
 exercicio 2
 """)
-barbeiro[0]["especialidade"]="Corte e Barba"
-barbeiro[0]["unidade"]="Centro"
-barbeiro[2]["unidade"]="Serra"
-for barbeiro in barbeiro:
+barbeiros[0]["especialidade"]="Corte e Barba"
+barbeiros[0]["unidade"]="Centro"
+barbeiros[2]["unidade"]="Serra"
+for barbeiro in barbeiros:
     print(barbeiro)
 
 print(""" 
