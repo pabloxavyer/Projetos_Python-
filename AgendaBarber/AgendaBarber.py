@@ -1,7 +1,11 @@
 print("""====================   BARBER PLANNER V.0.0.1 / Seja bem vindo!!!   ====================""")
 dia=""
 horario=""
-servico=""
+servico= {
+      "BARBA":25,
+      "CABELO": 45,
+      "COMBO": 60
+}
 nota=""
 cliente=[]
 lista_clientes=[]
@@ -13,7 +17,13 @@ lista_notas=[]
 lista_cancelados=[]
 caixa_diario=[]
 lista_agendamentos=[]
-horarios_disponiveis=["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]
+horarios_disponiveis={
+    "TERÇA-FEIRA": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+    "QUARTA-FEIRA": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+    "QUINTA-FEIRA": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+    "SEXTA-FEIRA": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+    "SÁBADO": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+}
 
 while True:
       opcao=int(input("""
@@ -24,44 +34,55 @@ while True:
 [5] CANCELAMENTO
                       
 Escolha entre as opções do menu: """))
-      
+      # AGENDAMENTO
       if opcao==1:
             print("Perfeito, vou te ajudar! Mas antes preciso de algumas informações: ")
             cliente=input("Insira seu nome: ").strip().upper()
             dia=input("Dia de interesse: ").strip().upper()
-            horario=(input(f""" Horarios disponiveis:
-            {horarios_disponiveis} 
-            escolha entre os horarios acima (Exemplo: 08:00): """))
-            if horario in horarios_disponiveis:
-                  print(f"{horario} agendado pre agendado, prossiga")
-            
-            if not horario in horarios_disponiveis:
-                  print(f"{horario} indisponivel, tente outro")
+
+            if dia not in horarios_disponiveis:
+                  print("Dia indisponivel ou barbearia estara fechada neste dia! Tente novamente jogador!" )
                   continue
-            horarios_disponiveis.remove(horario)
+
+            horario=(input(f""" Horarios disponiveis:
+            {horarios_disponiveis[dia]} 
+            escolha entre os horarios acima (Exemplo: 08:00): """))
+            if horario not in horarios_disponiveis:
+                  print(f"Horario {horario} esta indisponivel para {dia}, tente outro! ")
+                  continue
+            
+            horarios_disponiveis[dia].remove[horario]
             barbeiro=input("Gostaria de marcar com qual barbeiro? ").strip().upper()
             servico=input(f"""
-[1] Barba = 25 R$
-[2] Cabelo = 45 R$
-[3] Combo = 60 R$
+BARBA: 25 R$
+CABELO: 45 R$
+COMBO: 60 R$
                                                 
 Qual sera o serviço: """).strip().upper()
             historico_servicos.append(servico)        
-            if servico==BARBA:
-                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! serviço BARBA!")
-            elif servico==CABELO:
-                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! serviço CABELO!")
-            elif servico==COMBO:
-                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! o COMBO!")
+            if servico=="BARBA":
+                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! {servico} !")
+            elif servico=="CABELO":
+                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! {servico} !")
+            elif servico=="COMBO":
+                  print(f"Marcado com Barbeiro {barbeiro}, as {horario}h de {dia}! {servico}!")
             else:
                   print("Erro! Escolha novamente!")
             lista_clientes.append(cliente)
             
-            agendamento=f"Cliente: {cliente}  Dia: {dia}  Horário: {horario} Barbeiro: {barbeiro}"
+            agendamento={
+                        "CLIENTE": cliente,
+                        "DIA": dia,
+                        "HORARIO": horario,
+                        "BARBEIRO": barbeiro,
+                        "SERVIÇO": servico
+                        }
             lista_agendamentos.append(agendamento)
             
             lista_barbeiro.append(barbeiro)
             lista_dias.append(dia)
+            
+            # CONSULTAS
       elif opcao==2:
             print(f""" CONSULTA COMPLETA
 Agendamentos: {lista_agendamentos}

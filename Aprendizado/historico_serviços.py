@@ -11,3 +11,4 @@ while True:
         break
     cadastro["historico_serviços"].append(servico)
 print(f"Cliente: {cadastro}")
+print(f"Serviços realizados pelo cliente {cadastro["nome"]} {cadastro["historico_serviços"]}")
