@@ -12,12 +12,14 @@ print (pessoas["meninos"])
 print (pessoas["meninas"])
 
 
-lanche = ["doce", "salgado", "salgado", "bebida"]
-for todas_pessoas in lanche:
-    print (todas_pessoas)
+lanche = ["doce", "salgado", "bebida", "doce", "salgado", "bebida", "doce", salgado", "bebida"]
+print (len(lanche))
+for item in lanche:
+    print (item)
 
 todas_pessoas = pessoas["meninas"] + pessoas["meninos"]
 todas_pessoas.sort()
+print (len(todas_pessoas))
 
 escala = {}
 disponiveis = todas_pessoas.copy()
