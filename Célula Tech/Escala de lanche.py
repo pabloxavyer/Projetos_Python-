@@ -23,3 +23,4 @@ print (len(todas_pessoas))
 
 escala = {}
 disponiveis = todas_pessoas.copy()
+
