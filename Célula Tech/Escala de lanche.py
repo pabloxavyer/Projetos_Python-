@@ -21,3 +21,10 @@ todas_pessoas.sort()
 
 escala = {}
 disponiveis = todas_pessoas.copy()
+for pessoa in disponiveis:
+    sorteado = random.choice(lanche)
+    if sorteado in escala:
+        escala[sorteado].append(pessoa)
+    else:
+        escala[sorteado] = [pessoa]
+print (escala) 
