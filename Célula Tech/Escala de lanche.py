@@ -27,5 +27,4 @@ for pessoa in disponiveis:
         escala[sorteado].append(pessoa)
     else:
         escala[sorteado] = [pessoa]
-
 print (escala) 
